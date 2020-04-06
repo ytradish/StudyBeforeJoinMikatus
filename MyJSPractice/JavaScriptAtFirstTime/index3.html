@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!-- 概要：JavaScriptでクリックして当りを見つけるゲームの作成 -->
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript Practice</title>
+    <style>
+        body {
+            /* display = 要素の表示形式を指定する。デフォルト=inline
+            flex = 横並びなどのレイアウトを実現できる */
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* css lass定義 */
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            cursor: pointer;
+            transition: 0.8s;
+            margin: 0 8px 8px 0;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        .win {
+            background: pink;
+            border-radius: 50%;
+            transform: rotate(360deg);
+        }
+
+        .lose {
+            transform: scale(0.9);
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        const num = 5;
+
+        // Math.random() = 0から1までの乱数を生成
+        const winner = Math.floor(Math.random() * num);
+
+        // let = varと同じ型推測可能な変数型。varと違ってブロックスコープ。
+        for (let i = 0; i < num; i++) {
+            // divエレメントを生成
+            const div = document.createElement('div');
+
+            // divエレメントのスタイル定義
+            div.classList.add('box');
+
+            div.addEventListener('click', () => {
+
+                // === : 厳密な比較。型と内容が一致していることを判定
+                // ==  : あいまいな比較。型を変換してから、内容が一致していることを判定
+                if (i === winner)
+                {
+                    div.textContent = "win";
+                    div.classList.add('win');
+                }
+                else
+                {
+                    div.textContent = "lose";
+                    div.classList.add('lose');
+                }
+            });
+
+            // bodyへdivエレメントを追加
+            document.body.appendChild(div);
+        }
+
+    </script>
+
+</body>
+
+</html>

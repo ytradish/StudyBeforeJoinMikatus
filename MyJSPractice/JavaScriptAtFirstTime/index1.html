@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!-- 概要：JavaScriptでクリックすると見た目の変わるdivタグを作る -->
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript Practice</title>
+    <style>
+        body {
+            /* display = 要素の表示形式を指定する。デフォルト=inline
+            flex = 横並びなどのレイアウトを実現できる */
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* css lass定義 */
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            cursor: pointer;
+            transition: 0.8s;
+            margin: 0 8px 8px 0;
+        }
+
+        .circle {
+            background: pink;
+            border-radius: 50%;
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- div = division、ブロックレベル要素としてグループ化するタグ -->
+    <div class="box" id="target1"></div>
+    <div class="box" id="target2"></div>
+    <div class="box" id="target3"></div>
+
+    <script>
+        // ブラウザによるエラーチェック
+        //  JSは間違っていてもなんとなく動くので、不具合特定がしんどくなりそう。
+        //  厳格モードにしておけば問題のあるコードを早期発見できる。
+        //  コード品質的にも有効にするべきだと思う。
+        'use strict';
+
+        // 定数。値だけではなくて処理も定数として保存できる。これは視認性上がるのだろうか？処理内容追いにくい気がするけど。
+        const target1 = document.getElementById('target1');
+        const target2 = document.getElementById('target2');
+        const target3 = document.getElementById('target3');
+
+        // document = 文章全体
+        // getElementById = 指定IDのHTML要素を取得
+        // addEventListener = イベントリスナー登録
+        // () => {}); = Arrow関数。関数の書き方の一つ。
+        document.getElementById('target1').addEventListener('click', () => {
+            // classList = css classを配列として扱うオブジェクト。
+            //document.getElementById('target').classList.add('circle');
+
+            // 対象エレメントにcss classがあれば追加、なければ除去するらしい。なかなか便利。
+            // document.getElementById('target').classList.toggle('circle');
+
+            target1.classList.toggle('circle');
+        });
+
+        document.getElementById('target2').addEventListener('click', () => {
+            target2.classList.toggle('circle');
+        });
+
+        document.getElementById('target3').addEventListener('click', () => {
+            target3.classList.toggle('circle');
+        });
+
+    // Browser.DeveloperTool.Console = エラー出力
+
+    </script>
+
+</body>
+
+</html>
