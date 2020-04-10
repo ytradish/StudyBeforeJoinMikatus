@@ -15,6 +15,10 @@ variableOperate();
 stringOperate();
 arrayOperate();
 dateOperate();
+// showDialog();
+// controlTimer();
+// controlTimer2();
+catchException();
 
 function updateArray() {
   console.log('〇function updateArray');
@@ -253,7 +257,7 @@ function variableOperate() {
     x[0] = 5;
     console.log(`${x}/${y}`);
   }
-  
+
   {
     // スプレッド構文はiterable オブジェクトを渡すものなので、yは参照型にはならない
     let x = [1, 2];
@@ -273,6 +277,7 @@ function stringOperate() {
 }
 
 function arrayOperate() {
+  console.log('〇function arrayOperate');
   const d = [2019, 11, 14];
   console.log(d.join('/'));
 
@@ -287,16 +292,16 @@ function arrayOperate() {
 
   const scores = [10, 3, 9];
 
-  // letで初期値定義をしない場合、計算結果がNaNになる。どういう型判定してるのやら・・
+  // letで初期値定義をしない場合、計算結果がNaNになる。初期値undefinedに+=したからNaNかな？
   let sum = 0;
-  scores.forEach( score => {
+  scores.forEach(score => {
     sum += score;
   });
 
   console.log(`sum:${sum}`);
-  console.log(`average:${Math.floor(sum/scores.length)}`);
-  console.log(`average:${Math.ceil(sum/scores.length)}`);
-  console.log(`average:${Math.round(sum/scores.length)}`);
+  console.log(`average:${Math.floor(sum / scores.length)}`);
+  console.log(`average:${Math.ceil(sum / scores.length)}`);
+  console.log(`average:${Math.round(sum / scores.length)}`);
 
   //console.log(`${Math.random()}`);
   //console.log(`${Math.floor(Math.random()*100)}`);
@@ -305,10 +310,11 @@ function arrayOperate() {
 }
 
 function dateOperate() {
+  console.log('〇function dateOperate');
   const d = new Date();
   console.log(d);
 
-  console.log(`${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`);
+  console.log(`${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}`);
 
   // 時間情報はgetTimeを使うと世界共通時刻形式になる。
 
@@ -319,4 +325,56 @@ function dateOperate() {
   console.log(d2);
   d2.setDate(d2.getDate() + 10);
   console.log(`${d2}`)
+}
+
+function showDialog() {
+  console.log('〇function showDialog');
+  // alert('hello');
+
+  const answer = confirm('del?');
+  alert(answer);
+}
+
+function controlTimer() {
+  console.log('〇function controlTimer');
+  let i = 0;
+  function showTime() {
+    console.log(new Date());
+    i++;
+    if (i > 2) {
+      clearInterval(intervalId);
+    }
+  }
+
+  // これは感動的なほど構文が簡単
+  // 戻り値は識別子(Timerを識別するための情報)
+  const intervalId = setInterval(showTime, 1000);
+}
+
+function controlTimer2() {
+  console.log('〇function controlTimer2');
+
+  function showTime() {
+    console.log(new Date());
+  }
+
+  setTimeout(showTime, 1000);
+
+  // setIntervalとsetTimeoutの違いについて
+  // 実行数：setTimeout = 1回 / setInterval = 無限(止められるまで)
+  // 再帰時挙動：setTimeout = 遅延を保証する / setInterval = 遅延を保証しない(複数タスクになる可能性がある)
+}
+
+function catchException() {
+  console.log('〇function throwException');
+
+  const name = 5;
+  try {
+    console.log(name2.toUpperCase());
+  } catch (e) {
+    console.log(e);
+  }
+  console.log('finish');
+
+
 }
