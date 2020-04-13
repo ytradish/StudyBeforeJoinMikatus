@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .my-color {
+      color: red;
+      background-color: skyblue;
+    }
+
+    .my-border {
+      border-bottom: 4px solid orange;
+    }
+
+    li {
+      cursor: pointer;
+    }
+
+    li.done {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- DOM(Document Object Model)
+  ブラウザはHTMLをDOMへ変換してから表示する。
+  要素はNodeと呼び、Nodeにより構成された構造をNodeツリー(DOMツリー)と呼ぶ。当然ツリー構造。
+  HTML要素はElement Node、Text Nodeと呼称される。
+  Parent Node、Child Node、Sibling Node(兄弟) -->
+
+  <!-- テキストの制御 -->
+  <button>Run</button>
+  <button id="delBtn">Delete</button>
+
+  <h1 id="targetH1" title="見出し">ドットインストール</h1>
+  <p>こんにちわ。</p>
+  <p>こんにちわ。</p>
+  <p>こんにちわ。</p>
+  <h1 id="byeElement" class="my-border">さようなら</h1>
+
+  <!-- data-translation : カスタムデータ属性。data-を頭に付ければ好きな属性を定義できる。 -->
+  <h1 id="againElement" data-translation="see you">またあいましょう</h1>
+
+  <!-- テキストボックスの制御 -->
+  <ul>
+    <li>Seemo</li>
+    <li>マタ</li>
+  </ul>
+
+  <input type="text">
+  <button id="addBtn">Add</button>
+
+  <ul id="listElement">
+  </ul>
+
+  <!-- ドロップダウンの制御 -->
+  <select>
+    <option value="red!">red</option>
+    <option value="blue!">blue</option>
+    <option value="yellow">yellow</option>
+  </select>
+
+  <button id="addBtn2">Add</button>
+
+  <ul id="listElement2">
+  </ul>
+
+  <!-- ラジオボタンの制御 -->
+  <input type="radio" id="radio1" name="color" value="red"> 赤
+  <input type="radio" id="radio2" name="color" value="blue"> 青
+  <input type="radio" id="radio3" name="color" value="yellow"> 黄
+
+  <button id="addBtn3">Add</button>
+
+  <ul id="listElement3">
+  </ul>
+
+  <!-- チェックボックスの制御 -->
+  <input type="checkbox" id="check1" value="red"> 赤
+  <input type="checkbox" id="check2" value="blue"> 青
+  <input type="checkbox" id="check3" value="yellow"> 黄
+
+  <button id="addBtn4">Add</button>
+
+  <ul id="listElement4">
+  </ul>
+
+  <!-- イベント制御 -->
+  <button id="addBtn5">event fire</button>
+
+  <textarea></textarea>
+
+  <!-- フォーム制御 -->
+  <form>
+    <input type="text">
+    <button>Post</button>
+  </form>
+
+  <!-- イベント伝播 -->
+  <ul id="bubbleList">
+    <li>aa</li>
+    <li>bb</li>
+    <li>cc</li>
+  </ul>
+
+  <script src="script/Practice1.js"></script>
+</body>
+
+
+</html>
